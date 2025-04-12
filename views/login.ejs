@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Логин в чат</title>
+    <link rel="icon" href="assets/icon.png" type="image/png">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <h2>Вход в чат</h2>
+    <div class="login-container">
+        <h3>Введите никнейм и пароль</h3>
+        <form method="post">
+            <label>Ник: <input type="text" name="username" required></label><br>
+            <label>Пароль: <input type="password" name="password" required></label><br>
+            <button type="submit">Войти</button>
+        </form>
+        <!-- Блок для отображения ошибки -->
+        <% if (error) { %>
+            <p style="color: red; text-align: center;"><%= error %></p>
+        <% } %>
+        <div class="register-link">
+            <p>Еще нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+        </div>
+    </div>
+</body>
+</html>

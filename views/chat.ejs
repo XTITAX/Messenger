@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чат</title>
+    <link rel="icon" href="assets/icon.png" type="image/png">
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/js/chat.js"></script>
+    <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+    <h2>Привет, <%= username %></h2>
+
+    <div id="main">
+        <div id="chat-container">
+            <div id="chat"></div>
+            <form id="message-form">
+                <input type="text" id="message" placeholder="Введите сообщение" required>
+                <button type="submit" class="send-btn">Отправить</button>
+            </form>
+            <button onclick="localMsg()">Локальное сообщение</button>
+        </div>
+
+        <div id="user-list">
+            <ul id="users"></ul>
+        </div>
+    </div>  
+</body>
+</html>

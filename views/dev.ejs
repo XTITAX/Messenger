@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Чат + Dev-панель</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/icon.png" type="image/png">
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/js/chat.js"></script>
+    <link rel="stylesheet" href="/css/dev.css">
+</head>
+<body>
+    <h2>👑 Dev-панель — <%= username %></h2>
+    <div id="chat"></div>
+    <form id="message-form">
+        <input type="text" id="message" placeholder="Введите сообщение" required>
+        <button type="submit">Отправить</button>
+    </form>
+    <button class="localmsg" onclick="localMsg()">Локальное сообщение</button>
+    <div class="dev-panel">
+        <h3>Панель разработчика</h3>
+        <button onclick="clearChat()">Очистить историю чата</button>
+        <button onclick="kickUser()">Кикнуть пользователя</button>
+    </div>
+    <!-- Список участников -->
+    <h2 id="us">Участники</h2>
+    <div id="user-list">
+        <ul id="users">
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        // Функция для очистки чата
+        function clearChat() {
+            if (confirm("Вы уверены, что хотите очистить историю чата?")) {
+                socket.emit("clear chat");
+                document.getElementById('chat').innerHTML = '';  // Очистить локальный чат
+            }
+        }
+
+        // Функция для отправки локального сообщения
+        function localMsg() {
+            let targetUser = prompt("Введите имя пользователя для локального сообщения:");
+            if (targetUser) {
+                let msg = prompt("Введите сообщение:");
+                if (msg) {
+                    socket.emit("localmsg", msg, targetUser);
+                }
+            }
+        }
+    </script> 
+</body>
+</html>

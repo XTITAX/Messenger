@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Сервер переполнен</title>
+    <link rel="icon" href="assets/icon.png" type="image/png">
+    <link rel="stylesheet" href="/css/waiting.css">
+</head>
+<body>
+    <h1>Сервер переполнен</h1>
+    <p>Максимальное количество пользователей в чате — 3.</p>
+    <p>Пожалуйста, попробуйте подключиться позже.</p>
+    <div class="login">
+	    <button class="login">Вернутся на страницу логина</button>
+	</div>
+
+    <script>
+        let login = document.querySelector(".login")
+        login.addEventListener("click", function(){
+            document.location.href = '/'  
+        })
+    </script>
+</body>
+</html>
