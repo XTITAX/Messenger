@@ -6,8 +6,7 @@
     <title>Чат</title>
     <link rel="icon" href="assets/icon.png" type="image/png">
     <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-    <script src="/js/chat.js"></script>
-    <link rel="stylesheet" href="/css/chat.css">
+    <script src="/js/chat.js"></script>    
 </head>
 <body>
     <h2>Привет, <%= username %></h2>
@@ -17,14 +16,34 @@
             <div id="chat"></div>
             <form id="message-form">
                 <input type="text" id="message" placeholder="Введите сообщение" required>
-                <button type="submit" class="send-btn">Отправить</button>
+                <!-- <button type="submit" class="send-btn">Отправить</button> -->
+                <button type="submit" class="send-btn" id="sbtn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"/></svg></button>
             </form>
-            <button onclick="localMsg()">Локальное сообщение</button>
+            <button onclick="localMsg()" class="send-btn2">Локальное сообщение</button>
         </div>
-
         <div id="user-list">
             <ul id="users"></ul>
         </div>
     </div>  
+
+    <script>
+        function isPhoneDevice() {
+            return window.innerWidth <= 500 || /android|iphone|ipod/i.test(navigator.userAgent.toLowerCase());
+        }
+    
+        if (isPhoneDevice()) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = '/css/mobile/chat.css'; // Путь должен соответствовать твоему серверу
+            document.head.appendChild(link);
+        }
+        else {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = '/css/chat.css'; // Путь должен соответствовать твоему серверу
+            document.head.appendChild(link);
+            document.getElementById("sbtn").textContent = "Отправить";
+        }
+    </script>
 </body>
 </html>
